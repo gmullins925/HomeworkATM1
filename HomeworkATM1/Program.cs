@@ -96,7 +96,7 @@ namespace HomeworkATM1
 			return userNumber;
 		}
 
-		public static decimal AcctTransfer(string prompt)
+		public decimal AcctTransfer(string prompt)
 		{
 			int menuOpt = 0;
 			int amt;
