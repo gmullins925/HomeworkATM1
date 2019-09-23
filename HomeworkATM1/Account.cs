@@ -55,6 +55,8 @@ namespace HomeworkATM1
 			return Balance;
 		}
 
+
+
 		//  ShowTransactions - list to the console the transactions performed since day 1 
 		public void ShowTransactions()
 		{
