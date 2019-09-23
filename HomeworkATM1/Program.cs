@@ -113,29 +113,26 @@ namespace HomeworkATM1
 				{
 					case 1:
 						savingsAcctNum = GetInput("Account Name");
-						checkingAcctNum = GetInput("Account Name");
 						amt = GetNumber("Transfer Amount: ");
 						savings.Withdrawal(amt);
+						checkingAcctNum = GetInput("Account Name");
 						checking.Deposit(amt);
 						break;
 
 					case 2:
 						checkingAcctNum = GetInput("Account Name");
-						savingsAcctNum = GetInput("Account Name");
 						amt = GetNumber("Deposit Amount: ");
 						checking.Withdrawal(amt);
+						savingsAcctNum = GetInput("Account Name");
 						savings.Deposit(amt);
 						break;
 
 					default:
 						break;
 				}
+
 			}
 
 		}
-
-
-
-
 	}
 }
