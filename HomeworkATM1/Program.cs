@@ -22,7 +22,7 @@ namespace HomeworkATM1
 			while (menuOption != 1)
 			{
 				menuOption = GetNumber("1 - Exit\n2 - Create Checking\n3 - Create Savings\n4 - CHK Acct Balance\n5 - " +
-					"Savings Balance\n6 - Checking Deposit\n7 - Savings Deposit\n8 - Account Transfer");
+					"Savings Balance\n6 - Checking Deposit\n7 - Savings Deposit\n8 - Account Transfer\n>");
 
 				switch (menuOption)
 				{
@@ -31,41 +31,52 @@ namespace HomeworkATM1
 						break;
 
 					case 2:
-						accountName = GetInput("Account Name");
+						accountName = GetInput("Account Name: ");
 						balance = GetNumber("Initial Amt: ");
 						checking = new Checking(accountName, balance, 0.02f);
 						break;
 
 					case 3:
-						accountName = GetInput("Account Name");
+						accountName = GetInput("Account Name: ");
 						balance = GetNumber("Initial Amt: ");
 						savings = new Savings(accountName, balance, 0.03f);
 						break;
 
 					case 4:
-						accountName = GetInput("Account Name");
+						accountName = GetInput("Account Name: ");
 						Console.WriteLine(checking.Balance);
 						break;
 
 					case 5:
-						accountName = GetInput("Account Name");
+						accountName = GetInput("Account Name: ");
 						Console.WriteLine(savings.Balance);
 						break;
 
 					case 6:
-						accountName = GetInput("Account Name");
+						accountName = GetInput("Account Name: ");
 						amount = GetNumber("Deposit Amount: ");
 						checking.Deposit(amount);
 						break;
 
 					case 7:
-						accountName = GetInput("Account Name");
+						accountName = GetInput("Account Name: ");
 						amount = GetNumber("Deposit Amount: ");
 						savings.Deposit(amount);
 						break;
 
 					case 8:
-						AcctTransfer();
+						int direction = GetNumber("1 - Transfer From Checking to Savings\n2 - Transfer From Savings to Checking\n>");
+						amount = GetNumber("Transfer Amount: ");
+						if (direction == 1)
+							{
+							checking.Withdrawal(amount);
+							savings.Deposit(amount);
+							}
+						else
+							{
+							savings.Withdrawal(amount);
+							checking.Deposit(amount);
+							}
 						break;
 
 					default:
@@ -96,43 +107,6 @@ namespace HomeworkATM1
 			return userNumber;
 		}
 
-		public decimal AcctTransfer(string prompt)
-		{
-			int menuOpt = 0;
-			int amt;
-			string savingsAcctNum;
-			string checkingAcctNum;
-			Checking checking = null;
-			Savings savings = null;
-
-			while (menuOpt != 1)
-			{
-				menuOpt = GetNumber("1 - Transfer from Savings to Checking\n2 - Transfer from Checking to Savings");
-
-				switch (menuOpt)
-				{
-					case 1:
-						savingsAcctNum = GetInput("Account Name");
-						amt = GetNumber("Transfer Amount: ");
-						savings.Withdrawal(amt);
-						checkingAcctNum = GetInput("Account Name");
-						checking.Deposit(amt);
-						break;
-
-					case 2:
-						checkingAcctNum = GetInput("Account Name");
-						amt = GetNumber("Deposit Amount: ");
-						checking.Withdrawal(amt);
-						savingsAcctNum = GetInput("Account Name");
-						savings.Deposit(amt);
-						break;
-
-					default:
-						break;
-				}
-
-			}
-
-		}
+		
 	}
 }
